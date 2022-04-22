@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSweeper</title>
+    <style>
+        body{color:white;background-color: black;}
+        .cell {
+            width: 25px;
+            height: 25px;
+        }
+
+        table,
+        th,
+        td {
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid;
+            text-align: center;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div id="controls">
+            <textarea id="rows" placeholder="Input x for x^2"></textarea>
+            <br>
+            <p>Hard
+                <input type="range" min="0" max="49" value="25" class="slider" id="difficulty">
+                easy</p>
+            <button onclick="startGame()">Start</button>
+
+            <p id="status"></p>
+        </div>
+
+        <div id="gameContainer">
+            <table id="game"></table>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
