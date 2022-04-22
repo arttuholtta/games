@@ -6,6 +6,7 @@ var uoSq = 0
 var oSq = 0
 var tM = 0
 
+
 function startGame() {
     fl = 0
     mR = 0
@@ -45,7 +46,7 @@ function gameState(state) {
     if (state == "gameOver") {
         document.getElementById("status").innerHTML = "Game over :("
     }
-    if (state == "winner"){
+    if (state == "winner") {
         document.getElementById("status").innerHTML = "Congratulations winner!"
     }
     var mines = document.getElementsByClassName("mine")
@@ -92,6 +93,7 @@ function calcMines(board) {
             }
         }
     }
+    flagCounter()
 }
 //Used for revealing clear squares, and in the case of empty squares, opens up all squares, that a)have values b)are empty, around the clicked square.  Keeps count of opened and unopened squares.
 function reveal(id) {
@@ -162,14 +164,18 @@ function reveal(id) {
 //Used for marking flags. Also counts remaining mines
 function flag(id) {
     if (document.getElementById(id).style.color == "black") {} else if (document.getElementById(id).style.color == "red") {
+
         document.getElementById(id).style.cssText = "background-color:grey;color:grey;"
         fl--
+        flagCounter()
         if (id.includes("mine")) {
             mR++
         }
     } else {
         document.getElementById(id).style.cssText = "background-color: red; color: red;"
+
         fl++
+        flagCounter()
         if (id.includes("mine")) {
             mR--
             if (mR == 0) {
@@ -177,5 +183,8 @@ function flag(id) {
             }
         }
     }
+}
 
+function flagCounter() {
+    document.getElementById("remainingFlags").innerHTML = "🚩:" + (tM - fl)
 }
